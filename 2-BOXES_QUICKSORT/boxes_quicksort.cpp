@@ -39,8 +39,8 @@ void QuickSort(std::vector<box>& a, uint32_t start, uint32_t stop) {
     }
 
     uint32_t element = separation(a,start,stop);
-    separation(a,start,element-1);
-    separation(a,element+1,stop);
+    QuickSort(a,start,element-1);
+    QuickSort(a,element+1,stop);
 }
 
 int main() {

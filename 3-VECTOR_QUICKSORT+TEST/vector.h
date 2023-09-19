@@ -24,7 +24,7 @@ class Vector {
     u64 separation (u64 start, u64 stop, bool reverse) { 
     u64 i = start - 1;
     for (u64 j = start; j<=stop; j++) {
-        if (data[j] < data[stop]) {
+        if (data[j] < data[stop] == reverse) {
             i++;
             std::swap(data[i],data[j]);
         }
