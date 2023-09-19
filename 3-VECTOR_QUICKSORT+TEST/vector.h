@@ -1,6 +1,9 @@
+#pragma once
 #include <iostream>
+
 using u64 = uint64_t;
 const u64 DefaultVectorSize = 8;
+
 class Vector {
     private:
     u64 * data;
@@ -70,15 +73,21 @@ class Vector {
         return data[index];
     }
 
-    void QuickSort(bool reverse = true) {
-    u64 start = 0;
-    u64 stop = size;    
+    u64 get_size() {
+        return size;
+    }
+
+    void QuickSort(u64 start = -1, u64 stop = -1, bool reverse = true) {
+    if (start==-1 && stop==-1) {
+        start = 0;
+        stop = size -1;
+    }    
     if (start-stop<=1) {
         return;
     }
 
     u64 element = separation(start,stop, reverse);
-    separation(start,element-1, reverse);
-    separation(element+1,stop, reverse);
+    QuickSort(start,element-1, reverse);
+    QuickSort(element+1,stop, reverse);
     }
 };
